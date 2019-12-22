@@ -1,0 +1,34 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'com.mcbanners'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+bootJar {
+    archiveFileName = "mcapi.jar"
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.7.0'
+    implementation 'com.github.Steveice10:MCProtocolLib:1.15-1'
+    implementation("com.google.guava:guava:28.1-jre")
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
