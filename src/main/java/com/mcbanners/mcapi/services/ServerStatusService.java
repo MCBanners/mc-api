@@ -7,7 +7,6 @@ import com.github.steveice10.mc.protocol.data.status.handler.ServerInfoHandler;
 import com.github.steveice10.packetlib.Client;
 import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
 import com.google.common.net.HostAndPort;
-import com.mcbanners.mcapi.model.Player;
 import com.mcbanners.mcapi.model.ServerStatus;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -39,14 +38,6 @@ public class ServerStatusService {
             status.setVersion(info.getVersionInfo().getVersionName());
             status.getPlayers().setOnline(info.getPlayerInfo().getOnlinePlayers());
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
-            if (info.getPlayerInfo().getPlayers() != null) {
-                status.getPlayers().setPlayers(Stream.of(info.getPlayerInfo().getPlayers()).map(profile -> {
-                    final Player player = new Player();
-                    player.setName(profile.getName());
-                    player.setId(profile.getIdAsString());
-                    return player;
-                }).collect(Collectors.toList()));
-            }
 
             infoFuture.complete(status);
         });
