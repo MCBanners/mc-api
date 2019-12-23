@@ -7,6 +7,7 @@ public class ServerStatus {
     private String host;
     private int port;
     private String version;
+    private PlayersInfo players = new PlayersInfo();
 
     public String getHost() {
         return host;
@@ -30,5 +31,13 @@ public class ServerStatus {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public PlayersInfo getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(PlayersInfo players) {
+        this.players = players;
     }
 }
