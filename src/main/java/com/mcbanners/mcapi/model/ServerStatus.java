@@ -31,4 +31,24 @@ public class ServerStatus {
     public void setMotd(String motd) {
         this.motd = motd;
     }
+
+    public String getHost() {
+        return host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getMotd() {
+        return motd;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
 }

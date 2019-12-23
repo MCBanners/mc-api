@@ -11,4 +11,12 @@ public class PlayersInfo {
     public void setMax(int max) {
         this.max = max;
     }
+
+    public int getOnline() {
+        return online;
+    }
+
+    public int getMax() {
+        return max;
+    }
 }
