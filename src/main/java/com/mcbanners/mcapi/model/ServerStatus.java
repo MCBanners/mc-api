@@ -1,7 +1,5 @@
 package com.mcbanners.mcapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 public class ServerStatus {
     private String host;
     private int port;

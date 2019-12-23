@@ -1,10 +1,5 @@
 package com.mcbanners.mcapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.List;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayersInfo {
     private int online;
     private int max;
