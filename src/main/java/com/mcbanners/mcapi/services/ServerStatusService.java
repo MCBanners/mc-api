@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 @Service
 @CacheConfig(cacheNames = {"servers"})
@@ -59,9 +61,13 @@ public class ServerStatusService {
         client.getSession().connect();
 
         try {
-            return infoFuture.get();
+            return infoFuture.get(5, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
+        } catch (TimeoutException e) {
+            if (client.getSession().isConnected()) {
+                client.getSession().disconnect("timeout");
+            }
         }
         return null;
     }
