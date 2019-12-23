@@ -12,10 +12,12 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @CacheConfig(cacheNames = {"servers"})
@@ -38,6 +40,18 @@ public class ServerStatusService {
             status.setVersion(info.getVersionInfo().getVersionName());
             status.getPlayers().setOnline(info.getPlayerInfo().getOnlinePlayers());
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
+
+            status.setMotd(info.getDescription().getText());
+
+            final ByteArrayOutputStream icon = new ByteArrayOutputStream();
+            if (info.getIcon() != null) {
+                try {
+                    ImageIO.write(info.getIcon(), "png", icon);
+                    status.setIcon(Base64.getEncoder().encodeToString(icon.toByteArray()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
             infoFuture.complete(status);
         });
