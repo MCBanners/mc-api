@@ -25,7 +25,7 @@ public class ServerStatusService {
 
     @Cacheable
     public ServerStatus getStatus(HostAndPort hostAndPort) {
-        final int port = 25565;
+        final int port = hostAndPort.getPortOrDefault(25565);
 
         final CompletableFuture<ServerStatus> infoFuture = new CompletableFuture<>();
 
