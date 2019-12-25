@@ -25,8 +25,13 @@ import java.util.concurrent.TimeoutException;
 @CacheConfig(cacheNames = {"servers"})
 public class ServerStatusService {
 
+
     @Cacheable
-    public ServerStatus getStatus(HostAndPort hostAndPort) {
+    public ServerStatus getStatus(String host, int port) {
+        return getStatus(HostAndPort.fromParts(host, port));
+    }
+
+    private ServerStatus getStatus(HostAndPort hostAndPort) {
         final int port = hostAndPort.getPortOrDefault(25565);
 
         final CompletableFuture<ServerStatus> infoFuture = new CompletableFuture<>();
@@ -70,10 +75,5 @@ public class ServerStatusService {
             }
         }
         return null;
-    }
-
-    @Cacheable
-    public ServerStatus getStatus(String host, int port) {
-        return getStatus(HostAndPort.fromParts(host, port));
     }
 }
