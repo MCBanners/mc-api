@@ -5,7 +5,7 @@ public class ServerStatus {
     private int port;
     private String version;
     private PlayersInfo players = new PlayersInfo();
-    private String motd;
+    private Motd motd;
     private String icon;
 
     public void setHost(String host) {
@@ -28,10 +28,6 @@ public class ServerStatus {
         this.icon = icon;
     }
 
-    public void setMotd(String motd) {
-        this.motd = motd;
-    }
-
     public String getHost() {
         return host;
     }
@@ -44,11 +40,15 @@ public class ServerStatus {
         return version;
     }
 
-    public String getMotd() {
+    public String getIcon() {
+        return icon;
+    }
+
+    public Motd getMotd() {
         return motd;
     }
 
-    public String getIcon() {
-        return icon;
+    public void setMotd(Motd motd) {
+        this.motd = motd;
     }
 }

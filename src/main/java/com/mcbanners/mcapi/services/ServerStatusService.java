@@ -7,6 +7,7 @@ import com.github.steveice10.mc.protocol.data.status.handler.ServerInfoHandler;
 import com.github.steveice10.packetlib.Client;
 import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
 import com.google.common.net.HostAndPort;
+import com.mcbanners.mcapi.model.Motd;
 import com.mcbanners.mcapi.model.ServerStatus;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -48,7 +49,10 @@ public class ServerStatusService {
             status.getPlayers().setOnline(info.getPlayerInfo().getOnlinePlayers());
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
 
-            status.setMotd(info.getDescription().getText());
+            status.setMotd(new Motd());
+
+            status.getMotd().setRaw(info.getDescription().getText());
+            status.getMotd().setFormatted("Coming Soon");
 
             final ByteArrayOutputStream icon = new ByteArrayOutputStream();
             if (info.getIcon() != null) {
