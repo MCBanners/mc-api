@@ -27,7 +27,7 @@ public class IconController {
     public ResponseEntity<byte[]> getImage(@RequestParam String host, @RequestParam int port) {
         ServerStatus status = serverStatusService.getStatus(host, port);
         if (status == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else {
             return new ResponseEntity<>(Base64.getDecoder().decode(status.getIcon()), HttpStatus.OK);

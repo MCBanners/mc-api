@@ -25,7 +25,7 @@ public class ServerController {
     public ResponseEntity<ServerStatus> getStatus(@RequestParam String host, @RequestParam int port) {
         ServerStatus status = serverStatusService.getStatus(host, port);
         if (status == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else {
             return new ResponseEntity<>(status, HttpStatus.OK);
