@@ -30,5 +30,6 @@ dependencies {
     implementation 'com.github.ben-manes.caffeine:caffeine:2.7.0'
     implementation 'com.github.Steveice10:MCProtocolLib:1.15-1'
     implementation 'com.google.guava:guava:28.1-jre'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
