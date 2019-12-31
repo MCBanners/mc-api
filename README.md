@@ -1,1 +1,1 @@
-mcapi
+mc-api
