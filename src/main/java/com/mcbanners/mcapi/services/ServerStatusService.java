@@ -9,6 +9,7 @@ import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
 import com.google.common.net.HostAndPort;
 import com.mcbanners.mcapi.model.Motd;
 import com.mcbanners.mcapi.model.ServerStatus;
+import com.mcbanners.mcapi.utils.MotdUtils;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,7 @@ public class ServerStatusService {
             status.setMotd(new Motd());
 
             status.getMotd().setRaw(info.getDescription().getText().trim());
+            status.getMotd().setStripped(MotdUtils.stripColors(info.getDescription().getText()));
             status.getMotd().setFormatted("Coming Soon");
 
             final ByteArrayOutputStream icon = new ByteArrayOutputStream();
