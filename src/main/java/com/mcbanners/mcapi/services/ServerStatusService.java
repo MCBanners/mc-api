@@ -50,11 +50,13 @@ public class ServerStatusService {
             status.getPlayers().setOnline(info.getPlayerInfo().getOnlinePlayers());
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
 
-            status.setMotd(new Motd());
+            String raw = info.getDescription().getText().trim();
+            String stripped = MotdUtils.stripColors(raw);
 
-            status.getMotd().setRaw(info.getDescription().getText().trim());
-            status.getMotd().setStripped(MotdUtils.stripColors(info.getDescription().getText()).trim());
-            status.getMotd().setFormatted("Coming Soon");
+            status.setMotd(new Motd());
+            status.getMotd().setRaw(raw);
+            status.getMotd().setStripped(stripped);
+            status.getMotd().setFormatted(MotdUtils.splitNewLines(stripped));
 
             final ByteArrayOutputStream icon = new ByteArrayOutputStream();
             if (info.getIcon() != null) {
