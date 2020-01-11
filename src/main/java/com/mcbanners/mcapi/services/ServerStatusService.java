@@ -53,7 +53,7 @@ public class ServerStatusService {
             status.setMotd(new Motd());
 
             status.getMotd().setRaw(info.getDescription().getText().trim());
-            status.getMotd().setStripped(MotdUtils.stripColors(info.getDescription().getText()));
+            status.getMotd().setStripped(MotdUtils.stripColors(info.getDescription().getText()).trim());
             status.getMotd().setFormatted("Coming Soon");
 
             final ByteArrayOutputStream icon = new ByteArrayOutputStream();
