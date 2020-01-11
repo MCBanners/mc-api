@@ -2,8 +2,7 @@ package com.mcbanners.mcapi.model;
 
 public class Motd {
     private String raw;
-    private String stripped;
-    private String[] formatted;
+    private String formatted;
 
     public String getRaw() {
         return raw;
@@ -13,19 +12,11 @@ public class Motd {
         this.raw = raw;
     }
 
-    public String getStripped() {
-        return stripped;
-    }
-
-    public void setStripped(String stripped) {
-        this.stripped = stripped;
-    }
-
-    public String[] getFormatted() {
+    public String getFormatted() {
         return formatted;
     }
 
-    public void setFormatted(String[] formatted) {
+    public void setFormatted(String formatted) {
         this.formatted = formatted;
     }
 }

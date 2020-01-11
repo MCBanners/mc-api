@@ -51,12 +51,9 @@ public class ServerStatusService {
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
 
             String raw = info.getDescription().getText().trim();
-            String stripped = MotdUtils.stripColors(raw);
-
             status.setMotd(new Motd());
             status.getMotd().setRaw(raw);
-            status.getMotd().setStripped(stripped);
-            status.getMotd().setFormatted(MotdUtils.splitNewLines(stripped));
+            status.getMotd().setFormatted(MotdUtils.clean(raw));
 
             final ByteArrayOutputStream icon = new ByteArrayOutputStream();
             if (info.getIcon() != null) {
