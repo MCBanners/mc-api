@@ -1,7 +1,7 @@
-package com.mcbanners.mcapi.controller;
+package com.mcbanners.gameserverapi.controller;
 
-import com.mcbanners.mcapi.model.ServerStatus;
-import com.mcbanners.mcapi.services.ServerStatusService;
+import com.mcbanners.gameserverapi.model.ServerStatus;
+import com.mcbanners.gameserverapi.services.ServerStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
