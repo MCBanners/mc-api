@@ -1,4 +1,4 @@
-package com.mcbanners.mcapi.utils;
+package com.mcbanners.gameserverapi.utils;
 
 public class MotdUtils {
     /**

@@ -1,4 +1,4 @@
-package com.mcbanners.mcapi.model;
+package com.mcbanners.gameserverapi.model;
 
 public class Motd {
     private String raw;

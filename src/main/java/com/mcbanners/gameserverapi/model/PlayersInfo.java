@@ -1,4 +1,4 @@
-package com.mcbanners.mcapi.model;
+package com.mcbanners.gameserverapi.model;
 
 public class PlayersInfo {
     private int online;
