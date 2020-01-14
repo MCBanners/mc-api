@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.function.Function;
 
 public abstract class BasicHttpClient {
-    private static final String USER_AGENT = "MCBanners";
+    private static final String USER_AGENT = "MCBannersGameserverAPI";
     private final String baseURL;
     private final HttpHeaders headers;
     private final RestTemplate template;
