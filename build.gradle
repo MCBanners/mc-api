@@ -35,6 +35,8 @@ dependencies {
     implementation 'com.github.ben-manes.caffeine:caffeine:2.7.0'
     implementation 'com.github.Steveice10:MCProtocolLib:1.15-1'
     implementation 'com.google.guava:guava:28.1-jre'
+    implementation 'com.ibasco.agql:agql-steam-master:0.1.7'
+    implementation 'com.ibasco.agql:agql-source-query:0.1.7'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 

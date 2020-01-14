@@ -1,10 +1,12 @@
 package com.mcbanners.gameserverapi.game;
 
 import com.mcbanners.gameserverapi.game.service.MinecraftGameService;
+import com.mcbanners.gameserverapi.game.service.SourceGameService;
 import com.mcbanners.gameserverapi.utils.spring.SpringContext;
 
 public enum GameType {
-    MINECRAFT(MinecraftGameService.class);
+    MINECRAFT(MinecraftGameService.class),
+    SOURCE(SourceGameService.class);
 
     private Class<?> service;
 
