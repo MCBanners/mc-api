@@ -16,7 +16,7 @@ configurations {
 }
 
 bootJar {
-    archiveFileName = "mc-api.jar"
+    archiveFileName = "gameserver-api.jar"
 }
 
 repositories {
