@@ -1,6 +1,10 @@
 package com.mcbanners.gameserverapi.game.status.source;
 
+import com.ibasco.agql.protocols.valve.source.query.pojos.SourcePlayer;
 import com.mcbanners.gameserverapi.game.status.GameStatus;
+
+import java.util.List;
+import java.util.Map;
 
 public class SourceGameStatus extends GameStatus {
     private String name;
@@ -12,6 +16,7 @@ public class SourceGameStatus extends GameStatus {
     private byte numOfPlayers;
     private byte maxPlayers;
     private byte numOfBots;
+    private List<SourcePlayer> players;
     private boolean dedicated;
     private char operatingSystem;
     private boolean passwordProtected;
@@ -21,6 +26,7 @@ public class SourceGameStatus extends GameStatus {
     private short tvPort;
     private String tvName;
     private String serverTags;
+    private Map<String, String> rules;
     private long gameId;
 
     public String getName() {
@@ -173,5 +179,21 @@ public class SourceGameStatus extends GameStatus {
 
     public void setGameId(long gameId) {
         this.gameId = gameId;
+    }
+
+    public List<SourcePlayer> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<SourcePlayer> players) {
+        this.players = players;
+    }
+
+    public Map<String, String> getRules() {
+        return rules;
+    }
+
+    public void setRules(Map<String, String> rules) {
+        this.rules = rules;
     }
 }

@@ -11,6 +11,7 @@ import com.mcbanners.gameserverapi.game.status.minecraft.MessageOfTheDay;
 import com.mcbanners.gameserverapi.game.status.minecraft.MinecraftGameStatus;
 import com.mcbanners.gameserverapi.game.status.minecraft.PlayerInfo;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -30,6 +31,7 @@ public class MinecraftGameService extends GameService {
     }
 
     @Override
+    @Cacheable
     public GameStatus getStatus(String hostname, int port) {
         CompletableFuture<MinecraftGameStatus> futureStatus = new CompletableFuture<>();
         MinecraftProtocol proto = new MinecraftProtocol(SubProtocol.STATUS);
