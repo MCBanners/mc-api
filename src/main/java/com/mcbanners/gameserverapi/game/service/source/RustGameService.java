@@ -1,6 +1,6 @@
 package com.mcbanners.gameserverapi.game.service.source;
 
-import com.mcbanners.gameserverapi.game.SourceGameType;
+import com.mcbanners.gameserverapi.game.GameType;
 import com.mcbanners.gameserverapi.game.service.GameService;
 import com.mcbanners.gameserverapi.game.status.GameStatus;
 import org.springframework.cache.annotation.CacheConfig;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = {"rust-game-service"})
 public class RustGameService extends GameService {
     public RustGameService() {
-        super(SourceGameType.RUST.getPort());
+        super(GameType.RUST.getPort());
     }
 
     @Override

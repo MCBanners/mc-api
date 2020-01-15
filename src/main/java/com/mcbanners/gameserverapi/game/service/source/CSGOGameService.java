@@ -1,6 +1,6 @@
 package com.mcbanners.gameserverapi.game.service.source;
 
-import com.mcbanners.gameserverapi.game.SourceGameType;
+import com.mcbanners.gameserverapi.game.GameType;
 import com.mcbanners.gameserverapi.game.service.GameService;
 import com.mcbanners.gameserverapi.game.status.GameStatus;
 import org.springframework.cache.annotation.CacheConfig;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = {"csgo-game-service"})
 public class CSGOGameService extends GameService {
     public CSGOGameService() {
-        super(SourceGameType.CSGO.getPort());
+        super(GameType.CSGO.getPort());
     }
 
     @Override

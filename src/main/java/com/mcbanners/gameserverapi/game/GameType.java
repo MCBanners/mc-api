@@ -8,20 +8,26 @@ import com.mcbanners.gameserverapi.game.service.source.SD2DGameService;
 import com.mcbanners.gameserverapi.utils.spring.SpringContext;
 
 public enum GameType {
-    MINECRAFT(MinecraftGameService.class),
-    RUST(RustGameService.class),
-    CSGO(CSGOGameService.class),
-    SD2D(SD2DGameService.class),
-    ARK(ARKGameService.class);
+    MINECRAFT(MinecraftGameService.class, 25565),
+    RUST(RustGameService.class, 28015),
+    CSGO(CSGOGameService.class, 27015),
+    SD2D(SD2DGameService.class, 26900),
+    ARK(ARKGameService.class, 27015);
 
     private Class<?> service;
+    private final int port;
 
-    GameType(Class<?> service) {
+    GameType(Class<?> service, int port) {
         this.service = service;
+        this.port = port;
     }
 
     @SuppressWarnings("unchecked")
     public <T> T getService() {
         return (T) SpringContext.getBean(service);
+    }
+
+    public int getPort() {
+        return port;
     }
 }

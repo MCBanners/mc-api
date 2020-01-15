@@ -1,6 +1,6 @@
 package com.mcbanners.gameserverapi.game.service.source;
 
-import com.mcbanners.gameserverapi.game.SourceGameType;
+import com.mcbanners.gameserverapi.game.GameType;
 import com.mcbanners.gameserverapi.game.service.GameService;
 import com.mcbanners.gameserverapi.game.status.GameStatus;
 import org.springframework.cache.annotation.CacheConfig;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = {"sd2d-game-service"})
 public class SD2DGameService extends GameService {
     public SD2DGameService() {
-        super(SourceGameType.SD2D.getPort());
+        super(GameType.SD2D.getPort());
     }
 
     @Override
