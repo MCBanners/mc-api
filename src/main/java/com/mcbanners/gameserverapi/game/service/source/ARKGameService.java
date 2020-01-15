@@ -8,10 +8,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
-@CacheConfig(cacheNames = {"rust-game-service"})
-public class RustGameService extends GameService {
-    public RustGameService() {
-        super(SourceGameType.RUST.getPort());
+@CacheConfig(cacheNames = {"ark-game-service"})
+public class ARKGameService extends GameService {
+    public ARKGameService() {
+        super(SourceGameType.ARK.getPort());
     }
 
     @Override

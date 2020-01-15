@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 @CacheConfig(cacheNames = {"csgo-game-service"})
 public class CSGOGameService extends GameService {
-
     public CSGOGameService() {
         super(SourceGameType.CSGO.getPort());
     }
