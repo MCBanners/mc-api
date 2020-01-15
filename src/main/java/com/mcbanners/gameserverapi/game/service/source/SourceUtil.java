@@ -16,6 +16,7 @@ public class SourceUtil {
         try (SourceQueryClient sourceQueryClient = new SourceQueryClient()) {
             SourceGameStatus status = new SourceGameStatus();
             InetSocketAddress address = new InetSocketAddress(hostname, port);
+            sourceQueryClient.getServerChallengeFromCache(address);
             SourceServer server = sourceQueryClient.getServerInfo(address).get();
             status.setPlayers(sourceQueryClient.getPlayersCached(address).get());
             Map<String, String> rules = sourceQueryClient.getServerRulesCached(address).get();
