@@ -1,12 +1,14 @@
 package com.mcbanners.gameserverapi.game;
 
 import com.mcbanners.gameserverapi.game.service.MinecraftGameService;
+import com.mcbanners.gameserverapi.game.service.source.CSGOGameService;
 import com.mcbanners.gameserverapi.game.service.source.RustGameService;
 import com.mcbanners.gameserverapi.utils.spring.SpringContext;
 
 public enum GameType {
     MINECRAFT(MinecraftGameService.class),
-    RUST(RustGameService.class);
+    RUST(RustGameService.class),
+    CSGO(CSGOGameService.class);
 
     private Class<?> service;
 
