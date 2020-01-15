@@ -1,4 +1,4 @@
-package com.mcbanners.gameserverapi.utils;
+package com.mcbanners.gameserverapi.game.service.source;
 
 import com.ibasco.agql.protocols.valve.source.query.client.SourceQueryClient;
 import com.ibasco.agql.protocols.valve.source.query.pojos.SourceServer;
