@@ -2,6 +2,7 @@ package com.mcbanners.gameserverapi.game;
 
 import com.mcbanners.gameserverapi.game.service.MinecraftGameService;
 import com.mcbanners.gameserverapi.game.service.source.ARKGameService;
+import com.mcbanners.gameserverapi.game.service.source.ARMA3GameService;
 import com.mcbanners.gameserverapi.game.service.source.CSGOGameService;
 import com.mcbanners.gameserverapi.game.service.source.CSSGameService;
 import com.mcbanners.gameserverapi.game.service.source.GMODGameService;
@@ -18,7 +19,8 @@ public enum GameType {
     ARK(ARKGameService.class, 27015),
     TF2(TF2GameService.class, 27015),
     GMOD(GMODGameService.class, 27015),
-    CSS(CSSGameService.class, 27015);
+    CSS(CSSGameService.class, 27015),
+    ARMA3(ARMA3GameService.class, 2303);
 
     private Class<?> service;
     private final int port;
