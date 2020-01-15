@@ -33,6 +33,9 @@ public class SourceUtil {
             // Update this
             status.setHost(address.getHostString());
             status.setPort(address.getPort());
+            if (rules.containsKey("headerimage")) {
+                status.setIcon(rules.get("headerimage"));
+            }
             return status;
         } catch (Exception ex) {
             ex.printStackTrace();
