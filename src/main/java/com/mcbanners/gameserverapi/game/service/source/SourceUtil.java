@@ -1,32 +1,20 @@
-package com.mcbanners.gameserverapi.game.service;
+package com.mcbanners.gameserverapi.utils;
 
 import com.ibasco.agql.protocols.valve.source.query.client.SourceQueryClient;
 import com.ibasco.agql.protocols.valve.source.query.pojos.SourceServer;
 import com.mcbanners.gameserverapi.game.status.GameStatus;
 import com.mcbanners.gameserverapi.game.status.source.SourceGameStatus;
 import org.springframework.beans.BeanUtils;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
-@Service
-@CacheConfig(cacheNames = {"source-game-service"})
-public class SourceGameService extends GameService {
-    public SourceGameService() {
-        super(28015);
-    }
+public class SourceUtil {
 
-    @Override
-    @Cacheable
-    public GameStatus getStatus(String hostname, int port) {
-        InetSocketAddress address = new InetSocketAddress(hostname, port);
-
+    public static GameStatus query(String hostname, int port) {
         try (SourceQueryClient sourceQueryClient = new SourceQueryClient()) {
             SourceGameStatus status = new SourceGameStatus();
+            InetSocketAddress address = new InetSocketAddress(hostname, port);
             SourceServer server = sourceQueryClient.getServerInfo(address).get();
             status.setPlayers(sourceQueryClient.getPlayersCached(address).get());
             Map<String, String> rules = sourceQueryClient.getServerRulesCached(address).get();

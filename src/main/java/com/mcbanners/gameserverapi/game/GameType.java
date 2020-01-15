@@ -1,12 +1,12 @@
 package com.mcbanners.gameserverapi.game;
 
 import com.mcbanners.gameserverapi.game.service.MinecraftGameService;
-import com.mcbanners.gameserverapi.game.service.SourceGameService;
+import com.mcbanners.gameserverapi.game.service.source.RustGameService;
 import com.mcbanners.gameserverapi.utils.spring.SpringContext;
 
 public enum GameType {
     MINECRAFT(MinecraftGameService.class),
-    SOURCE(SourceGameService.class);
+    RUST(RustGameService.class);
 
     private Class<?> service;
 
