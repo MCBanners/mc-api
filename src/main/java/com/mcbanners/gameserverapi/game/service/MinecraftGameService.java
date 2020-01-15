@@ -6,6 +6,7 @@ import com.github.steveice10.mc.protocol.data.SubProtocol;
 import com.github.steveice10.mc.protocol.data.status.handler.ServerInfoHandler;
 import com.github.steveice10.packetlib.Client;
 import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
+import com.mcbanners.gameserverapi.game.GameType;
 import com.mcbanners.gameserverapi.game.status.GameStatus;
 import com.mcbanners.gameserverapi.game.status.minecraft.MessageOfTheDay;
 import com.mcbanners.gameserverapi.game.status.minecraft.MinecraftGameStatus;
@@ -27,7 +28,7 @@ import java.util.concurrent.TimeoutException;
 @CacheConfig(cacheNames = {"minecraft-game-service"})
 public class MinecraftGameService extends GameService {
     public MinecraftGameService() {
-        super(25565);
+        super(GameType.MINECRAFT.getPort());
     }
 
     @Override
