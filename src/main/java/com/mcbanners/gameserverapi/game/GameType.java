@@ -5,6 +5,7 @@ import com.mcbanners.gameserverapi.game.service.source.ARKGameService;
 import com.mcbanners.gameserverapi.game.service.source.ARMA3GameService;
 import com.mcbanners.gameserverapi.game.service.source.CSGOGameService;
 import com.mcbanners.gameserverapi.game.service.source.CSSGameService;
+import com.mcbanners.gameserverapi.game.service.source.DayZGameService;
 import com.mcbanners.gameserverapi.game.service.source.GMODGameService;
 import com.mcbanners.gameserverapi.game.service.source.RustGameService;
 import com.mcbanners.gameserverapi.game.service.source.SD2DGameService;
@@ -20,7 +21,8 @@ public enum GameType {
     TF2(TF2GameService.class, 27015),
     GMOD(GMODGameService.class, 27015),
     CSS(CSSGameService.class, 27015),
-    ARMA3(ARMA3GameService.class, 2303);
+    ARMA3(ARMA3GameService.class, 2303),
+    DAYZ(DayZGameService.class, 2305);
 
     private Class<?> service;
     private final int port;
