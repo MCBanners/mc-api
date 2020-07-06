@@ -46,7 +46,7 @@ public class ServerStatusService {
 
             status.setHost(hostAndPort.getHost());
             status.setPort(port);
-            status.setVersion(info.getVersionInfo().getVersionName());
+            status.setVersion(MotdUtils.clean(info.getVersionInfo().getVersionName()));
             status.getPlayers().setOnline(info.getPlayerInfo().getOnlinePlayers());
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
 
