@@ -10,13 +10,11 @@ import com.google.common.net.HostAndPort;
 import com.mcbanners.mcapi.model.Motd;
 import com.mcbanners.mcapi.model.ServerStatus;
 import com.mcbanners.mcapi.utils.MotdUtils;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.ImageIO;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Base64;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -50,19 +48,14 @@ public class ServerStatusService {
             status.getPlayers().setOnline(info.getPlayerInfo().getOnlinePlayers());
             status.getPlayers().setMax(info.getPlayerInfo().getMaxPlayers());
 
-            String raw = info.getDescription().getText().trim();
+            final String raw = LegacyComponentSerializer.legacySection().serialize(info.getDescription()).trim();
+
             status.setMotd(new Motd());
             status.getMotd().setRaw(raw);
             status.getMotd().setFormatted(MotdUtils.clean(raw));
 
-            final ByteArrayOutputStream icon = new ByteArrayOutputStream();
-            if (info.getIcon() != null) {
-                try {
-                    ImageIO.write(info.getIcon(), "png", icon);
-                    status.setIcon(Base64.getEncoder().encodeToString(icon.toByteArray()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            if (info.getIconPng() != null) {
+                status.setIcon(Base64.getEncoder().encodeToString(info.getIconPng()));
             }
 
             infoFuture.complete(status);
