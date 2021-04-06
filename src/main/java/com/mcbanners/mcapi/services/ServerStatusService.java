@@ -2,7 +2,6 @@ package com.mcbanners.mcapi.services;
 
 import com.github.steveice10.mc.protocol.MinecraftConstants;
 import com.github.steveice10.mc.protocol.MinecraftProtocol;
-import com.github.steveice10.mc.protocol.data.SubProtocol;
 import com.github.steveice10.mc.protocol.data.status.handler.ServerInfoHandler;
 import com.github.steveice10.packetlib.Client;
 import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
@@ -33,12 +32,10 @@ public class ServerStatusService {
 
     private ServerStatus getStatus(HostAndPort hostAndPort) {
         final int port = hostAndPort.getPortOrDefault(25565);
-
         final CompletableFuture<ServerStatus> infoFuture = new CompletableFuture<>();
+        final MinecraftProtocol mcProto = new MinecraftProtocol();
 
-        final MinecraftProtocol mcProto = new MinecraftProtocol(SubProtocol.STATUS);
-
-        Client client = new Client(hostAndPort.getHost(), port, mcProto, new TcpSessionFactory());
+        final Client client = new Client(hostAndPort.getHost(), port, mcProto, new TcpSessionFactory());
         client.getSession().setFlag(MinecraftConstants.SERVER_INFO_HANDLER_KEY, (ServerInfoHandler) (session, info) -> {
             final ServerStatus status = new ServerStatus();
 
