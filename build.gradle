@@ -16,7 +16,7 @@ configurations {
 }
 
 bootJar {
-    archiveFileName = "mc-api.jar"
+    archiveFileName = "mcapi.jar"
 }
 
 repositories {
