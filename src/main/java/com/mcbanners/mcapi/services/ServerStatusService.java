@@ -3,8 +3,7 @@ package com.mcbanners.mcapi.services;
 import com.github.steveice10.mc.protocol.MinecraftConstants;
 import com.github.steveice10.mc.protocol.MinecraftProtocol;
 import com.github.steveice10.mc.protocol.data.status.handler.ServerInfoHandler;
-import com.github.steveice10.packetlib.Client;
-import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
+import com.github.steveice10.packetlib.tcp.TcpClientSession;
 import com.google.common.net.HostAndPort;
 import com.mcbanners.mcapi.model.Motd;
 import com.mcbanners.mcapi.model.ServerStatus;
@@ -35,8 +34,8 @@ public class ServerStatusService {
         final CompletableFuture<ServerStatus> infoFuture = new CompletableFuture<>();
         final MinecraftProtocol mcProto = new MinecraftProtocol();
 
-        final Client client = new Client(hostAndPort.getHost(), port, mcProto, new TcpSessionFactory());
-        client.getSession().setFlag(MinecraftConstants.SERVER_INFO_HANDLER_KEY, (ServerInfoHandler) (session, info) -> {
+        final TcpClientSession client = new TcpClientSession(hostAndPort.getHost(), port, mcProto);
+        client.setFlag(MinecraftConstants.SERVER_INFO_HANDLER_KEY, (ServerInfoHandler) (session, info) -> {
             final ServerStatus status = new ServerStatus();
 
             status.setHost(hostAndPort.getHost());
@@ -58,15 +57,15 @@ public class ServerStatusService {
             infoFuture.complete(status);
         });
 
-        client.getSession().connect();
+        client.connect();
 
         try {
             return infoFuture.get(5, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
-            if (client.getSession().isConnected()) {
-                client.getSession().disconnect("timeout");
+            if (client.isConnected()) {
+                client.disconnect("timeout");
             }
         }
         return null;
