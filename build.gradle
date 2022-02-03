@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.github.Steveice10:MCProtocolLib:1.18-2'
     implementation 'net.kyori:adventure-text-serializer-legacy:4.9.3'
     implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'io.sentry:sentry-spring-boot-starter:5.6.1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 

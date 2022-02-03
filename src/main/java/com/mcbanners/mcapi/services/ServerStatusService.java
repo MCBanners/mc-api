@@ -8,6 +8,7 @@ import com.google.common.net.HostAndPort;
 import com.mcbanners.mcapi.model.Motd;
 import com.mcbanners.mcapi.model.ServerStatus;
 import com.mcbanners.mcapi.utils.MotdUtils;
+import io.sentry.Sentry;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -62,11 +63,12 @@ public class ServerStatusService {
         try {
             return infoFuture.get(5, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            Sentry.captureException(e);
         } catch (TimeoutException e) {
             if (client.isConnected()) {
                 client.disconnect("timeout");
             }
+            Sentry.captureException(e);
         }
         return null;
     }
