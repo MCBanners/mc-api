@@ -19,4 +19,13 @@ public class MotdUtils {
                 // trim leading and trailing spaces (superfluous)
                 .trim();
     }
+
+    /**
+     * Strips color code formatting in the MOTD
+     * @param input the unformatted MOTD description
+     * @return MOTD description with no color codes
+     */
+    public static String stripColors(final String input) {
+        return input.replaceAll("(?i)\u00A7[0-9A-FK-OR](?-i)", "").trim();
+    }
 }

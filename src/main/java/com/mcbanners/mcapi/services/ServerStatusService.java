@@ -48,6 +48,7 @@ public class ServerStatusService {
 
             status.setMotd(new Motd());
             status.getMotd().setRaw(raw);
+            status.getMotd().setColorless(MotdUtils.stripColors(raw));
             status.getMotd().setFormatted(MotdUtils.clean(raw));
 
             if (info.getIconPng() != null) {
