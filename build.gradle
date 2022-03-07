@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.github.ben-manes.caffeine:caffeine:3.0.5'
     implementation 'com.github.Steveice10:MCProtocolLib:1.18-3'
     implementation 'net.kyori:adventure-text-serializer-legacy:4.10.1'
-    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'com.google.guava:guava:31.1-jre'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
