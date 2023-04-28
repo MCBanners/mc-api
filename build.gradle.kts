@@ -27,7 +27,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.6")
     implementation("com.github.Steveice10:MCProtocolLib:1.18-3")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.11.0")
+    implementation("net.kyori:adventure-text-serializer-legacy:4.13.1")
     implementation("com.google.guava:guava:31.1-jre")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
