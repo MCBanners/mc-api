@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version "2.7.11"
+    id("org.springframework.boot") version "3.0.6"
     id("io.spring.dependency-management") version "1.1.0"
     id("java")
 }
@@ -20,13 +20,13 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2021.0.7"))
+    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2022.0.2"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.6")
-    implementation("com.github.Steveice10:MCProtocolLib:1.18-3")
+    implementation("com.github.Steveice10:MCProtocolLib:1.19.4-1")
     implementation("net.kyori:adventure-text-serializer-legacy:4.13.1")
     implementation("com.google.guava:guava:31.1-jre")
 
