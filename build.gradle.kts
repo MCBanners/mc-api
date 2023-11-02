@@ -25,7 +25,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    implementation("com.github.ben-manes.caffeine:caffeine:3.1.6")
+    implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
     implementation("com.github.Steveice10:MCProtocolLib:1.19.4-1")
     implementation("net.kyori:adventure-text-serializer-legacy:4.13.1")
     implementation("com.google.guava:guava:31.1-jre")
