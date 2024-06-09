@@ -1,5 +1,5 @@
 # Prepare environment
-FROM alpine:3.18
+FROM alpine:3.20
 RUN apk add openjdk16
 
 # Download source code
